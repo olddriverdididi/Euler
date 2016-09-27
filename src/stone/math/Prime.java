@@ -2,6 +2,7 @@ package stone.math;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.lang.Math;
 
 /*
  * Copyright (C) 2014-2016  福建星网视易信息系统有限公司
@@ -20,11 +21,11 @@ import java.util.Arrays;
 public final class Prime {
 
     /** [初始化时生成的sPrimeArray长度] */
-    private static final int sInitPrimeArrayLength = 1000;
+    private static final int sInitPrimeArrayLength = 5;
     /** [sPrimeArray数组的长度] */
     private static int sPrimeArrayLength = 0;
     /** [从2开始的素数数组] */
-    private static int[] sPrimeArray = {};
+    private static int[] sPrimeArray = { 1 };
     /** [小于等于此数的整数都已被验证是否为素数] */
     private static int sMaxCheckedPrime = 1;
 
@@ -235,6 +236,47 @@ public final class Prime {
             return false;
         }
 
+        return true;
+    }
+
+    /**
+     * [功能说明]采用Miller-Rabin算法判断一个大整数是否为素数
+     * 有较小概率返回错误结果
+     * @param num
+     * @return 是素数返回true
+     */
+    public static boolean isMrPrime(long num) {
+        if (num <= 2) {
+            if (num == 2) {
+                return true;
+            }
+            return false;
+        }
+
+        if (num % 2 == 0) {
+            return false;
+        }
+        long u = num - 1;
+        while (u % 2 == 0) {
+            u /= 2;
+        }
+        int s = 2;
+        long[] aArray = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37 };
+        for (int i = 0; i < s; i++) {
+            long a = aArray[i];
+            long x = ((long) Math.pow(a, u)) % num;
+            while (u < num) {
+                long y = x * x % num;
+                if (y == 1 && x != 1 && x != num - 1) {
+                    return false;
+                }
+                x = y;
+                u = u * 2;
+            }
+            if (x != 1) {
+                return false;
+            }
+        }
         return true;
     }
 }
