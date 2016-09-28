@@ -38,6 +38,13 @@ public final class Prime {
     }
 
     /**
+     * 工具类的私有构造器
+     */
+    private Prime() {
+
+    }
+
+    /**
      * @return the primeArray
      */
     public static int[] getPrimeArray() {
@@ -61,7 +68,8 @@ public final class Prime {
     /**
      * [功能说明]判断一个数是否为素数
      * 
-     * @param num 待判断的整数
+     * @param num
+     *            待判断的整数
      * @return num是素数返回true,否则返回false
      */
     public static boolean isPrime(int num) {
@@ -82,7 +90,8 @@ public final class Prime {
      * [功能说明]返回长度为length的素数数组，如果数组长度超过sPrimeArray，则会替换原来的数组,
      * 函数负责维护sPrimeArray、sMaxCheckedPrime、sPrimeArrayLength
      * 
-     * @param length 返回的数组长度
+     * @param length
+     *            返回的数组长度
      * @return int素数数组
      */
     public static int[] getPrimeArrayByLength(int length) {
@@ -114,7 +123,8 @@ public final class Prime {
      * [功能说明]返回num以下的素数数组，如果数组长度超过sPrimeArray，则会替换原来的数组，
      * 函数负责维护sPrimeArray、sMaxCheckedPrime、sPrimeArrayLength
      * 
-     * @param num 请求的素数数组上限
+     * @param num
+     *            请求的素数数组上限
      * @return 素数数组
      */
     public static int[] getPrimeArrayBelow(int num) {
@@ -155,7 +165,8 @@ public final class Prime {
     /**
      * [功能说明]返回num在sPrimeArray的索引，如果不存在则返回-1,用二分法查找
      * 
-     * @param num 待查找的整数
+     * @param num
+     *            待查找的整数
      * @return index 索引
      */
     public static int getPrimeIndex(int num) {
@@ -165,8 +176,10 @@ public final class Prime {
     /**
      * [功能说明]用二分法在数组arr中查找key，找到返回索引，否则返回-1
      * 
-     * @param arr 待搜索的数组
-     * @param key 关键字
+     * @param arr
+     *            待搜索的数组
+     * @param key
+     *            关键字
      * @return 索引值
      */
     public static int binarySearch(int[] arr, int key) {
@@ -209,7 +222,8 @@ public final class Prime {
     /**
      * [功能说明]利用sPrimeArray快速判断是否为素数
      * 
-     * @param num 待判断的整数
+     * @param num
+     *            待判断的整数
      * @return 是否为素数
      */
     public static boolean isQuickPrime(int num) {
@@ -241,9 +255,10 @@ public final class Prime {
     }
 
     /**
-     * [功能说明]采用Miller-Rabin算法判断一个大整数是否为素数
-     * 有较小概率返回错误结果
-     * @param num 待判断的整数
+     * [功能说明]采用Miller-Rabin算法判断一个大整数是否为素数 有较小概率返回错误结果
+     * 
+     * @param num
+     *            待判断的整数
      * @return 是素数返回true
      */
     public static boolean isMrPrime(long num) {
