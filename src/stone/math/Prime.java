@@ -3,6 +3,7 @@ package stone.math;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.lang.Math;
+import java.math.BigInteger;
 
 /*
  * Copyright (C) 2014-2016  Stone Chen
@@ -12,7 +13,7 @@ import java.lang.Math;
  *  Date        Author      Version     Description
  *  -----------------------------------------------
  *  2016年9月13日     Stone Chen	1.0       	[实现基本功能]
- *  2016年9月28日      Stone Chen 1.1         [添加Miller-Rabin算法判断大数是否为素数函数isMrPrime()]
+ *  2016年9月28日      Stone Chen 1.1         [添加判断大数是否为质数函数，调用BigInteger提供的方法]
  *
  */
 
@@ -255,44 +256,15 @@ public final class Prime {
     }
 
     /**
-     * [功能说明]采用Miller-Rabin算法判断一个大整数是否为素数 有较小概率返回错误结果
+     * [功能说明]采用Miller-Rabin算法判断一个大整数是否为素数，可靠性为1-1/(2^certainty)
      * 
      * @param num
      *            待判断的整数
      * @return 是素数返回true
      */
-    public static boolean isMrPrime(long num) {
-        if (num <= 2) {
-            if (num == 2) {
-                return true;
-            }
-            return false;
-        }
-
-        if (num % 2 == 0) {
-            return false;
-        }
-        long u = num - 1;
-        while (u % 2 == 0) {
-            u /= 2;
-        }
-        int s = 2;
-        long[] aArray = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37 };
-        for (int i = 0; i < s; i++) {
-            long a = aArray[i];
-            long x = ((long) Math.pow(a, u)) % num;
-            while (u < num) {
-                long y = x * x % num;
-                if (y == 1 && x != 1 && x != num - 1) {
-                    return false;
-                }
-                x = y;
-                u = u * 2;
-            }
-            if (x != 1) {
-                return false;
-            }
-        }
-        return true;
+    public static boolean isProbablePrime(long num, int certainty) {
+        String numStr = String.valueOf(num);
+        BigInteger bigNum = new BigInteger(numStr);
+        return bigNum.isProbablePrime(certainty);
     }
 }

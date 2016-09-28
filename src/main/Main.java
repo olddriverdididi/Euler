@@ -26,7 +26,7 @@ public class Main {
      * 答题函数，把解题代码写在这里
      */
     public static void solve() {
-        System.out.println(Prime.isMrPrime(35L));
+        
     }
 
     public static int getLength(int num) {
