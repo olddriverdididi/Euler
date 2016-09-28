@@ -5,13 +5,14 @@ import java.util.Arrays;
 import java.lang.Math;
 
 /*
- * Copyright (C) 2014-2016  福建星网视易信息系统有限公司
- * All rights reserved by  福建星网视易信息系统有限公司
+ * Copyright (C) 2014-2016  Stone Chen
+ * All rights reserved by  Stone Chen
  *
  *  Modification History:
  *  Date        Author      Version     Description
  *  -----------------------------------------------
- *  2016年9月13日     陈李俊     		1.0       	[修订说明]
+ *  2016年9月13日     Stone Chen	1.0       	[实现基本功能]
+ *  2016年9月28日      Stone Chen 1.1         [添加Miller-Rabin算法判断大数是否为素数函数isMrPrime()]
  *
  */
 
@@ -44,14 +45,14 @@ public final class Prime {
     }
 
     /**
-     * @return the sPrimeArrayLength
+     * @return the PrimeArrayLength
      */
     public static int getPrimeArrayLength() {
         return sPrimeArrayLength;
     }
 
     /**
-     * @return the sMaxCheckedPrime
+     * @return the MaxCheckedPrime
      */
     public static int getMaxCheckedPrime() {
         return sMaxCheckedPrime;
@@ -60,7 +61,7 @@ public final class Prime {
     /**
      * [功能说明]判断一个数是否为素数
      * 
-     * @param num
+     * @param num 待判断的整数
      * @return num是素数返回true,否则返回false
      */
     public static boolean isPrime(int num) {
@@ -81,7 +82,7 @@ public final class Prime {
      * [功能说明]返回长度为length的素数数组，如果数组长度超过sPrimeArray，则会替换原来的数组,
      * 函数负责维护sPrimeArray、sMaxCheckedPrime、sPrimeArrayLength
      * 
-     * @param length
+     * @param length 返回的数组长度
      * @return int素数数组
      */
     public static int[] getPrimeArrayByLength(int length) {
@@ -113,8 +114,8 @@ public final class Prime {
      * [功能说明]返回num以下的素数数组，如果数组长度超过sPrimeArray，则会替换原来的数组，
      * 函数负责维护sPrimeArray、sMaxCheckedPrime、sPrimeArrayLength
      * 
-     * @param num
-     * @return
+     * @param num 请求的素数数组上限
+     * @return 素数数组
      */
     public static int[] getPrimeArrayBelow(int num) {
         if (num < 2) {
@@ -154,8 +155,8 @@ public final class Prime {
     /**
      * [功能说明]返回num在sPrimeArray的索引，如果不存在则返回-1,用二分法查找
      * 
-     * @param num
-     * @return index
+     * @param num 待查找的整数
+     * @return index 索引
      */
     public static int getPrimeIndex(int num) {
         return binarySearch(sPrimeArray, num);
@@ -164,9 +165,9 @@ public final class Prime {
     /**
      * [功能说明]用二分法在数组arr中查找key，找到返回索引，否则返回-1
      * 
-     * @param arr
-     * @param key
-     * @return
+     * @param arr 待搜索的数组
+     * @param key 关键字
+     * @return 索引值
      */
     public static int binarySearch(int[] arr, int key) {
         int start = 0;
@@ -208,7 +209,7 @@ public final class Prime {
     /**
      * [功能说明]利用sPrimeArray快速判断是否为素数
      * 
-     * @param num
+     * @param num 待判断的整数
      * @return 是否为素数
      */
     public static boolean isQuickPrime(int num) {
@@ -242,7 +243,7 @@ public final class Prime {
     /**
      * [功能说明]采用Miller-Rabin算法判断一个大整数是否为素数
      * 有较小概率返回错误结果
-     * @param num
+     * @param num 待判断的整数
      * @return 是素数返回true
      */
     public static boolean isMrPrime(long num) {

@@ -6,7 +6,7 @@ import java.util.Vector;
 import stone.math.Prime;
 
 /**
- * @author "陈李俊"
+ * @author "Stone Chen"
  *
  */
 public class Main {
