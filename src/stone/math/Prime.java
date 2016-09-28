@@ -17,7 +17,7 @@ import java.lang.Math;
  */
 
 /**
- * [功能说明]素数类
+ * [功能说明]素数工具类，工具类具有私有构造器，不允许创建实例，提供各种静态方法
  */
 public final class Prime {
 
