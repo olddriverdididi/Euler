@@ -136,13 +136,8 @@ public final class Prime {
         ArrayList<Integer> primeList = new ArrayList<Integer>();
         // 将sPrimeArray中小于等于num的素数加入list
         if (num <= sMaxCheckedPrime) {
-            for (int prime : sPrimeArray) {
-                if (prime <= num) {
-                    primeList.add(prime);
-                } else {
-                    break;
-                }
-            }
+            int index = binarySearch(sPrimeArray, num, true);
+            return Arrays.copyOf(sPrimeArray, index + 1);
         }
         // 将大于sMaxCheckedPrime小于等于num的素数加入list
         for (int n = sMaxCheckedPrime + 1; n <= num; n++) {
