@@ -1,6 +1,6 @@
 /*
- * Copyright (C) 2014-2016  福建星网视易信息系统有限公司
- * All rights reserved by  福建星网视易信息系统有限公司
+ * Copyright (C) 2014-2016  Stone Chen
+ * All rights reserved by  Stone Chen
  *
  *  Modification History:
  *  Date        Author      Version     Description
