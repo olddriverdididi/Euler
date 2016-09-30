@@ -23,7 +23,7 @@ import java.math.BigInteger;
 public final class Prime {
 
     /** [初始化时生成的sPrimeArray长度] */
-    private static final int sInitPrimeArrayLength = 5;
+    private static final int sInitPrimeArrayLength = 100;
     /** [sPrimeArray数组的长度] */
     private static int sPrimeArrayLength = 0;
     /** [从2开始的素数数组] */
@@ -173,9 +173,9 @@ public final class Prime {
     public static int getPrimeIndex(int num) {
         return binarySearch(sPrimeArray, num);
     }
-
+    
     /**
-     * [功能说明]用二分法在数组arr中查找key，找到返回索引，否则返回-1
+     * [功能说明]用二分法在数组arr中查找key，找到返回索引，返回-1
      * 
      * @param arr
      *            待搜索的数组
@@ -184,6 +184,21 @@ public final class Prime {
      * @return 索引值
      */
     public static int binarySearch(int[] arr, int key) {
+        return binarySearch(arr,key,false);
+    }
+
+    /**
+     * [功能说明]用二分法在数组arr中查找key，找到返回索引，否则根据isStrict标志返回
+     * 
+     * @param arr
+     *            待搜索的数组
+     * @param key
+     *            关键字
+     * @param isStrict
+     *            是否要求在找不到key时返回小于key的最大值的索引
+     * @return 索引值
+     */
+    public static int binarySearch(int[] arr, int key, boolean isStrict) {
         int start = 0;
         int end = arr.length - 1;
         while (start <= end) {
@@ -195,6 +210,11 @@ public final class Prime {
             } else {
                 return middle;
             }
+        }
+        // 若数组中找不到，是否返回小于key的最大数的索引
+        if (isStrict) {
+            int result = start > end ? end : -1;
+            return result;
         }
         return -1;
     }
