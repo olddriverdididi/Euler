@@ -23,11 +23,11 @@ import java.math.BigInteger;
 public final class Prime {
 
     /** [初始化时生成的sPrimeArray长度] */
-    private static final int sInitPrimeArrayLength = 100;
+    private static final int sInitPrimeArrayLength = 1000;
     /** [sPrimeArray数组的长度] */
     private static int sPrimeArrayLength = 0;
     /** [从2开始的素数数组] */
-    private static int[] sPrimeArray = { 1 };
+    private static int[] sPrimeArray = {};
     /** [小于等于此数的整数都已被验证是否为素数] */
     private static int sMaxCheckedPrime = 1;
 
@@ -168,7 +168,7 @@ public final class Prime {
     public static int getPrimeIndex(int num) {
         return binarySearch(sPrimeArray, num);
     }
-    
+
     /**
      * [功能说明]用二分法在数组arr中查找key，找到返回索引，返回-1
      * 
@@ -179,7 +179,7 @@ public final class Prime {
      * @return 索引值
      */
     public static int binarySearch(int[] arr, int key) {
-        return binarySearch(arr,key,false);
+        return binarySearch(arr, key, false);
     }
 
     /**
